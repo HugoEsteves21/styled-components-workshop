@@ -3,6 +3,11 @@ import { useNavigate } from "react-router-dom";
 import loadingSpinner from "../assets/spinner.gif";
 
 /* Import Your Files Below This Line*/
+import { StyledSection } from "../components/styled/Section.styled";
+import { StyledForm } from "../components/styled/Form.styled";
+import { StyledButton } from "../components/styled/Button.styled";
+import { toast } from 'react-toastify';
+import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
 
 function FakeLogin() {
   /* useState To Toggle Loading Spinner */
@@ -14,13 +19,23 @@ function FakeLogin() {
   const fakeLogin = () => {
     setLoading(true);
     setTimeout(() => {
+      notify();
       setLoading(false);
       navigate("/");
     }, 3000);
   };
 
+  const notify = () => {
+    toast.success('Login Succeful!', {
+      position: toast.POSITION.TOP_CENTER,
+      theme: 'dark',
+      icon: '😎',
+      transition: Slide,
+    })
+  }
+
   return (
-    <section>
+    <StyledSection>
       <div>
         {/* Loading Spinner */}
         {loading && (
@@ -38,20 +53,20 @@ function FakeLogin() {
 
         {/* Login From */}
         {!loading && (
-          <form>
+          <StyledForm>
             <label htmlFor="username">username</label>
             <input type="text" name="username" />
 
             <label htmlFor="password">password</label>
             <input type="password" name="password" />
 
-            <button type="submit" onClick={() => fakeLogin()}>
+            <StyledButton type="submit" onClick={() => fakeLogin()}>
               <h3>Login</h3>
-            </button>
-          </form>
+            </StyledButton>
+          </StyledForm>
         )}
       </div>
-    </section>
+    </StyledSection>
   );
 }
 

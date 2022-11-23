@@ -7,20 +7,27 @@ import AboutToastify from "./pages/AboutToastify";
 import FakeLogin from "./pages/FakeLogin";
 
 /* Import Your Files Below This Line*/
+import { GlobalStyles } from "./components/styled/Global.styled";
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <GlobalStyles />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/styled" element={<AboutStyled />} />
-        <Route path="/toasty" element={<AboutToastify />} />
-        <Route path="/login" element={<FakeLogin />} />
-      </Routes>
+      <ToastContainer />
+      
+        <NavBar />
 
-      <Footer />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/styled" element={<AboutStyled />} />
+          <Route path="/toasty" element={<AboutToastify />} />
+          <Route path="/login" element={<FakeLogin />} />
+        </Routes>
+
+        <Footer />
     </div>
   );
 }
